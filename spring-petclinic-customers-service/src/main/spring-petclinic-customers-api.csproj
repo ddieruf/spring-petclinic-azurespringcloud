@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>spring_petclinic_customers_api</RootNamespace>
+    <Version>1.0.0</Version>
+    <AssemblyName>customers-service</AssemblyName>
+    <UserSecretsId>5be80453-22de-41d6-83c9-b8eda8c82078</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+
+    <PackageReference Include="Steeltoe.Connector.EFCore" Version="3.0.1-3946" />
+    <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.0.1-3946" />
+    <PackageReference Include="Steeltoe.Discovery.Eureka" Version="3.0.1-3946" />
+    <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="3.0.1-3946" />
+    <PackageReference Include="Steeltoe.Management.EndpointCore" Version="3.0.1-3946" />
+    <PackageReference Include="Steeltoe.Management.TracingCore" Version="3.0.1-3946" />
+    <PackageReference Include="Steeltoe.Common.Hosting" Version="3.0.1-3946" />
+
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    
+    <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="1.0.0-preview.1" />
+
+  </ItemGroup>
+
+  <Target Name="Publish-Zip" AfterTargets="Publish">
+      <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(MSBuildProjectDirectory)/deploy.zip" Overwrite="true" />
+  </Target>
+
+</Project>
